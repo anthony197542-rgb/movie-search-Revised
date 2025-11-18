@@ -1,0 +1,257 @@
+/* ==========================================================================
+   Futuristic Movie DB — Professional Brick Wall + Neon Spray Theme
+   Author: Anthony
+   ========================================================================== */
+
+/* Root Variables */
+:root {
+  --text: #e8e8e8;
+  --muted: #bfbfbf;
+
+  --accent-1: #ff2d55;
+  --accent-2: #00e5ff;
+  --accent-3: #79ff4d;
+  --accent-4: #ffd166;
+
+  --panel-bg: rgba(10,10,10,0.45);
+  --panel-border: rgba(255,255,255,0.06);
+
+  --brick-1: #8b2c2c;
+  --brick-2: #a33d2d;
+  --brick-3: #b84a3a;
+  --mortar: #d6d2cc;
+
+  --brick-h: 48px;
+  --brick-w: 96px;
+  --joint: 4px;
+
+  --grid-gap: 16px;
+  --brand-size: 28px;
+}
+
+/* Reset */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+html, body {
+   height: 100%;
+    margin: 0;
+    background: transparent; 
+    color: var(--text); 
+    font-family: 'Permanent Marker', cursive;
+   }
+
+/* Brick Wall Background */
+body {
+ background-color: #8b2c2c; /* base brick red */
+  background-image:
+    /* mortar horizontal lines */
+    linear-gradient(#d6d2cc 4px, transparent 4px),
+    /* mortar vertical lines */
+    linear-gradient(90deg, #d6d2cc 4px, transparent 4px),
+    /* brick shading */
+    linear-gradient(0deg, #8b2c2c, #a33d2d, #b84a3a);
+  background-size: 96px 48px; /* brick width x brick height */
+  background-blend-mode: multiply;
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(0,0,0,0.05) 0 2px,
+    transparent 2px 6px
+  );
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+
+/* Header */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(4px);
+  background: rgba(0,0,0,0.6);
+  border-bottom: 1px solid var(--panel-border);
+  padding: 12px 0;
+}
+
+/* Top Row: Search + Button */
+.site-header__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ gap: 12px;
+ padding: 12px 16px;
+}
+
+#search-input {
+  flex: 1;
+  max-width: 400px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.45);
+  color: var(--text);
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+#search-input::placeholder { 
+  color: #9a9a9a;
+}
+#search-input:focus {
+   border-color: var(--accent-2); 
+   box-shadow: 0 0 14px rgba(0,229,255,0.25);
+   }
+
+.header-btn, .modal-close {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  background: #ff2d55;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.header-btn {
+  margin-left: 16px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent-1);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s ease, transform .2s ease;
+}
+.header-btn:hover {
+   background: #ff4d75;
+    transform: translateY(-2px);
+   }
+
+/* Centered Navigation */
+.site-header__nav {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 12px 0;
+}
+
+.nav__link {
+  text-decoration: none;
+  color: #bfbfbf;
+  font-weight: ;
+
+}
+.nav__link:hover {
+  color: var(--text);
+  background: rgba(255,255,255,0.08);
+  box-shadow: 0 0 10px rgba(255,255,255,0.1);
+}
+.nav__link--active {
+  color: #fff;
+}
+
+/* Layout */
+.u-container { 
+  width: min(1200px, 92vw);
+   margin: 0 auto; }
+.layout { 
+  display: grid;
+   grid-template-columns: 260px 1fr;
+    gap: var(--grid-gap);
+    padding: 24px 0 48px; 
+  }
+.panel {
+   background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+     backdrop-filter: blur(2px); 
+     border-radius: 12px;
+     }
+
+/* Filters */
+.filters__title { 
+  padding: 14px 16px;
+   font-weight: 700;
+    letter-spacing: 0.6px;
+     border-bottom: 1px solid var(--panel-border);
+      background: rgba(255,255,255,0.05);
+     }
+.chip-list { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 10px;
+   padding: 14px;
+   }
+.chip {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  color: var(--text);
+  border: 1px solid var(--panel-border);
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  transition: transform .12s ease, box-shadow .2s ease;
+}
+.chip:hover {
+  transform: translateY(-1px);
+   box-shadow: 0 0 10px rgba(255,255,255,0.06);
+   }
+.chip--active { 
+  background: linear-gradient(90deg, var(--accent-1), #ff7aa0);
+   border-color: rgba(255,255,255,0.25);
+   }
+
+/* Cards Grid */
+.cards { 
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  padding: 16px;
+   }
+.card {
+position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 3;   /* cinematic poster shape */
+  overflow: hidden;      /* keeps image inside */
+  border-radius: 12px;
+  background: transparent;
+  text-decoration: none;
+  color: var(--text);
+  transition: transform .2s ease;
+ 
+ 
+}
+.card:hover { transform: scale(1.03); }
+
+/* Poster Styling */
+.card__poster {
+ width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;     /* fills card without distortion */
+  border-radius: 12px;
+  border: 3px solid rgba(0,0,0,0.5);
+  box-shadow: 0 0 12px rgba(0,0,0,0.6), 0 0 24px rgba(0,0,0,0.4);
+  
+}
+
+.card:hover { transform: scale(1.03); }
+
+/* Spray-Paint Glow */
+.card::before {
+  content: "";
+  position: absolute; inset: -6px;
+  border-radius: 14px;
+  background:
+    radial-gradient(120px 90px at 20% 15%, var(--accent-1), transparent 70%),
+    radial-gradient(160px 120px at 80% 20%, var(--accent-2), transparent 75%);
+  filter: blur(12px);
+  opacity: 0.4;
+  mix-blend-mode: screen;
+}
