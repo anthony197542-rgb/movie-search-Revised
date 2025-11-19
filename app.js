@@ -7,7 +7,7 @@ function searchChange(event) {
  renderMovies(event.target.value)
  searchName.innerHTML = event.target.value;
 }
-let currentMovies = []
+let currentMovies = [];
 
 async function renderMovies(searchTerm) {
   const respone = await fetch(
@@ -32,18 +32,3 @@ currentMovies = data.search;
       `;
         .join("");
         }
-
-
-
-function sortChange(enent) {
-const sortOption = event.target.value
-
-let sortMovies = [...currentMovies]
-
-if (sortOption === "newest") {
-sortedMovies.sort((a, b) => )
-} else if (sortOption === "oldest") {
- 
-  }
-     renderMovies(sortedMovies);
-      }
