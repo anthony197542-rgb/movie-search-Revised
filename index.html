@@ -13,6 +13,7 @@
   <header class="site-header">
     <nav class="u-container site-header__top">
         <input type="text" id="search-input" placeholder="Search movies...">
+      
         <button class="header-btn">Sign In</button>
       </div>
   </div>
@@ -192,6 +193,14 @@
           </div>
         </article>
 
+      </div>
+      <div class="price-filter flex flex-col">
+        <select name="movieSort" id="movieSort" onchange="sortChange(event)">
+          <option disabled selected value="">Sort by year</option>
+          <option value="newest">Newest to Oldest</option>
+          <option value="oldest">Oldest to Newest</option>
+        </select>
+      </div>
       </div>
     </section>
   </main>
