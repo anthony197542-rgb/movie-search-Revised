@@ -11,22 +11,16 @@
 
   <!-- Header -->
   <header class="site-header">
-    <div class="u-container site-header__top">
+    <nav class="u-container site-header__top">
         <input type="text" id="search-input" placeholder="Search movies...">
         <button class="header-btn">Sign In</button>
       </div>
-
-    
-          <button class="modal-close id=modalClose">✖</button>
-    </div>
-
-  
-    <nav class="u-container site-header__nav">
+  </div>
+  <nav class="nav__link nav__link--active" href="#" id="nav-home">
       <a class="nav__link nav__link--active" href="#">Home</a>
-      <a class="nav__link" href="#">Top Rated</a>
-      <a class="nav__link" href="#">Popular</a>
-      <a class="nav__link" href="#">Genres</a>
-      <a class="nav__link" href="#">Watchlist</a>
+      <a class="nav__link" href="#" id="nav-top-rated">Top Rated</a>
+      <a class="nav__link" href="#" id="nav-popular">Popular</a>
+      <a class="nav__link" href="#" id="nav-genres">Genres</a>
     </nav>
   </header>
 
@@ -52,7 +46,7 @@
 
      
         <article class="card" data-genre="Sci‑Fi" data-year="2025" data-rating="8.6">
-          <img src="./Neon drift.jpg" alt="Neon Drift Poster" class="card__poster">
+          <img src="./assets/Neon drift.jpg" alt="Neon Drift Poster" class="card__poster">
           <div class="card__body">
             <div class="card__title">Neon Drift</div>
             <div class="card__meta">2025 • Sci‑Fi • ★★★★☆</div>
@@ -62,7 +56,7 @@
 
     
         <article class="card" data-genre="Action" data-year="2001" data-rating="8.0">
-          <img src="./fast and furiuos.jpg" alt="Fast and Furious Poster" class="card__poster">
+          <img src="./assets/fast and furiuos.jpg" alt="Fast and Furious Poster" class="card__poster">
           <div class="card__body">
             <div class="card__title">Fast and Furious</div>
             <div class="card__meta">2001 • Action • ★★★★☆</div>
@@ -72,7 +66,7 @@
 
     
         <article class="card" data-genre="Drama" data-year="2024" data-rating="7.9">
-          <img src="./Inception.jpg" alt="Inception Poster" class="card__poster">
+          <img src="./assets/Inception.jpg" alt="Inception Poster" class="card__poster">
           <div class="card__body">
             <div class="card__title">Inception</div>
             <div class="card__meta">2024 • Drama • ★★★★☆</div>
@@ -82,7 +76,7 @@
 
    
         <article class="card" data-genre="Action" data-year="2022" data-rating="7.5">
-          <img src="./Tron.jpg" alt="Troon Poster" class="card__poster">
+          <img src="./assets/Tron.jpg" alt="Troon Poster" class="card__poster">
           <div class="card__body">
             <div class="card__title">Troon</div>
             <div class="card__meta">2022 • Action • ★★★★☆</div>
@@ -92,7 +86,7 @@
 
   
         <article class="card" data-genre="Action" data-year="2004" data-rating="7.2">
-          <img src="./Blade_Trilogy.jpg" alt="Blade Trilogy Poster" class="card__poster">
+          <img src="./assets/Blade_Trilogy.jpg" alt="Blade Trilogy Poster" class="card__poster">
           <div class="card__body">
             <div class="card__title">Blade Trilogy</div>
             <div class="card__meta">2004 • Action • ★★★★☆</div>
@@ -102,7 +96,7 @@
 
      
         <article class="card" data-genre="Action" data-year="2021" data-rating="8.1">
-          <img src="./Warrior.jpg" alt="Warrior Poster" class="card__poster">
+          <img src="./assets/Warrior.jpg" alt="Warrior Poster" class="card__poster">
           <div class="card__body">
             <div class="card__title">Warrior</div>
             <div class="card__meta">2021 • Action‑Drama • ★★☆</div>
@@ -112,7 +106,7 @@
 
       
         <article class="card" data-genre="Sci‑Fi" data-year="2021" data-rating="8.1">
-          <img src="./The Veil (2).jpg" alt="The Veil Poster" class="card__poster">
+          <img src="./assets/The Veil (2).jpg" alt="The Veil Poster" class="card__poster">
           <div class="card__body">
             <div class="card__title">Veil</div>
             <div class="card__meta">2021 • Action‑Drama • ★★☆</div>
@@ -122,7 +116,7 @@
 
  
         <article class="card" data-genre="Sci‑Fi" data-year="2021" data-rating="8.1">
-          <img src="./Matrix.avif" alt="The Matrix Poster" class="card__poster">
+          <img src="./assets/Matrix.avif" alt="The Matrix Poster" class="card__poster">
           <div class="card__body">
             <div class="card__title">Matrix</div>
             <div class="card__meta">2021 • Action‑Drama • ★★☆</div>
@@ -132,7 +126,7 @@
 
  
         <article class="card" data-genre="Action" data-year="2008" data-rating="9.0">
-          <img src="./Batman.jpg" alt="Batman Poster" class="card__poster">
+          <img src="./assets/Batman.jpg" alt="Batman Poster" class="card__poster">
           <div class="card__body">
             <div class="card__title">Batman</div>
             <div class="card__meta">2008 • Action • ★★★★★</div>
@@ -142,7 +136,7 @@
 
 
         <article class="card" data-genre="Action" data-year="2002" data-rating="8.0">
-          <img src="./Spiderman.jpg" alt="Spider‑Man Poster" class="card__poster">
+          <img src="./assets/Spiderman.jpg" alt="Spider‑Man Poster" class="card__poster">
           <div class="card__body">
             <div class="card__title">Spider‑Man</div>
             <div class="card__meta">2002 • Action • ★★★★☆</div>
@@ -151,7 +145,7 @@
         </article>
 
         <article class="card" data-genre="Drama" data-year="2004" data-rating="7.5">
-          <img src="./Polar express.jpg" alt="The Polar Express Poster" class="card__poster">
+          <img src="./assets/Polar express.jpg" alt="The Polar Express Poster" class="card__poster">
           <div class="card__body">
             <div class="card__title">The Polar Express</div>
             <div class="card__meta">2004 • Drama • ★★★★☆</div>
@@ -161,7 +155,7 @@
 
 
         <article class="card" data-genre="Horror" data-year="1980" data-rating="7.0">
-          <img src="./Friday.jpg" alt="Friday the 13th Poster" class="card__poster">
+          <img src="./assets/Friday.jpg" alt="Friday the 13th Poster" class="card__poster">
           <div class="card__body">
             <div class="card__title">Friday the 13th</div>
             <div class="card__meta">1980 • Horror • ★★★★☆</div>
@@ -171,17 +165,16 @@
 
    
         <article class="card" data-genre="Drama" data-year="2000" data-rating="8.5">
-          <img src="./Gladiator.jpg" alt="Gladiator Poster" class="card__poster">
+          <img src="./assets/Gladiator.jpg" alt="Gladiator Poster" class="card__poster">
           <div class="card__body">
             <div class="card__title">Gladiator</div>
             <div class="card__meta">2000 • Drama • ★★★★☆</div>
             <button class="btn-trailer" data-trailer-id="owK1qxDselE" data-title="Gladiator">Watch Trailer</button>
           </div>
         </article>
-
   
         <article class="card" data-genre="Adventure" data-year="1985" data-rating="7.8">
-          <img src="./Goonies.jpg" alt="The Goonies Poster" class="card__poster">
+          <img src="./assets/Goonies.jpg" alt="The Goonies Poster" class="card__poster">
           <div class="card__body">
             <div class="card__title">The Goonies</div>
             <div class="card__meta">1985 • Adventure • ★★★★☆</div>
@@ -191,7 +184,7 @@
 
      
         <article class="card" data-genre="Comedy" data-year="2011" data-rating="7.2">
-          <img src="./Muppets.jpg" alt="The Muppets Poster" class="card__poster">
+          <img src="./assets/Muppets.jpg" alt="The Muppets Poster" class="card__poster">
           <div class="card__body">
             <div class="card__title">The Muppets</div>
             <div class="card__meta">2011 • Comedy • ★★★★☆</div>
