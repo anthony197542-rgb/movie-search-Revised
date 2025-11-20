@@ -208,50 +208,62 @@ body::after {
    }
 
 /* Cards Grid */
-.cards { 
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 16px;
-  padding: 16px;
-   }
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  padding: 2rem;
+}
+
 .card {
-position: relative;
-  width: 100%;
-  aspect-ratio: 2 / 3;   /* cinematic poster shape */
-  overflow: hidden;      /* keeps image inside */
-  border-radius: 12px;
-  background: transparent;
-  text-decoration: none;
-  color: var(--text);
-  transition: transform .2s ease;
- 
- 
+  flex: 0 0 200px; /* fixed width */
+  background-color: #111;
+  color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+  transition: transform 0.3s ease;
 }
-.card:hover { transform: scale(1.03); }
 
-/* Poster Styling */
+.card:hover {
+  transform: scale(1.05);
+}
+
 .card__poster {
- width: 100%;
-  height: 100%;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
   display: block;
-  object-fit: cover;     /* fills card without distortion */
-  border-radius: 12px;
-  border: 3px solid rgba(0,0,0,0.5);
-  box-shadow: 0 0 12px rgba(0,0,0,0.6), 0 0 24px rgba(0,0,0,0.4);
-  
 }
 
-.card:hover { transform: scale(1.03); }
+.card__body {
+  padding: 1rem;
+  text-align: center;
+}
 
-/* Spray-Paint Glow */
-.card::before {
-  content: "";
-  position: absolute; inset: -6px;
-  border-radius: 14px;
-  background:
-    radial-gradient(120px 90px at 20% 15%, var(--accent-1), transparent 70%),
-    radial-gradient(160px 120px at 80% 20%, var(--accent-2), transparent 75%);
-  filter: blur(12px);
-  opacity: 0.4;
-  mix-blend-mode: screen;
+.card__title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.card__meta {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 0.5rem;
+}
+
+.btn-trailer {
+  background-color: #0ff;
+  color: #000;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.btn-trailer:hover {
+  background-color: #0cc;
 }
