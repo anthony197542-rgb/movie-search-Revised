@@ -24,10 +24,10 @@
 
   <!-- 🔍 Search Bar -->
   <div class="search-bar">
-    <input type="text" placeholder="Search movies..." oninput="searchChange(event)" />
+    <input type="text" id="searchInput" placeholder="Search movies...">
     <span class="searchName"></span>
   </div>
-
+<div class="results"></div>
   <!-- 📊 Sort Dropdown -->
   <div class="sort-bar">
     <select onchange="sortChange(event)">
