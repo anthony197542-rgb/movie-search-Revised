@@ -2,213 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Futuristic Movie DB</title>
-  <link rel="stylesheet" href="style.css">
-  <script defer src="app.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie Search</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
+
+
 </head>
 <body>
-
-  <header class="site-header">
-    <div class="u-container site-header__top">
-      <input type="text" id="search-Input" placeholder="Search movies...">
-      <button onclick="searchMovies()">Search</button>
-    </div>
-    <nav class="nav-links">
-      <a class="nav__link nav__link--active" href="#" id="nav-home">Home</a>
-      <a class="nav__link" href="#" id="nav-top-rated">Top Rated</a>
-      <a class="nav__link" href="#" id="nav-popular">Popular</a>
-      <a class="nav__link" href="#" id="nav-genres">Genres</a>
-    </nav>
+  <header>
+    <h1>Movie Search</h1>
   </header>
 
-  <!-- 🔍 Search Bar -->
-  <div class="search-bar">
-    <input type="text" id="searchInput" placeholder="Search movies...">
-    <span class="searchName"></span>
-  </div>
-<div class="results"></div>
-  <!-- 📊 Sort Dropdown -->
-  <div class="sort-bar">
-    <select onchange="sortChange(event)">
-      <option value="">Sort by...</option>
-      <option value="newest">Newest</option>
-      <option value="oldest">Oldest</option>
-    </select>
-  </div>
-
-  <!-- 🎭 Type Filters -->
-  <div class="filters">
-    <button onclick="filterChange('all')">All</button>
-    <button onclick="filterChange('movie')">Movies</button>
-    <button onclick="filterChange('series')">Series</button>
-  </div>
-
-  <!-- 🧭 Navigation -->
-  <nav class="nav-bar">
-    <button onclick="navChange('home')">Home</button>
-    <button onclick="navChange('top')">Top Rated</button>
-    <button onclick="navChange('popular')">Popular</button>
-    <button onclick="navChange('genres')">Genres</button>
-  </nav>
-
-  <!-- 🎬 Movie Cards -->
   <main>
-    <section class="panel">
-      <div class="cards" id="cards">
+    <section aria-labelledby="search-label">
+      <form id="searchForm" role="search">
+        <label id="search-label" for="searchInput">Search for a movie:</label>
+        <input type="text" id="searchInput" name="query" required />
+        <button type="submit">Search</button>
+      </form>
+    </section>
 
-        <article class="card" data-genre="Sci-Fi" data-year="2025" data-rating="8.6">
-          <img src="./assets/Neon drift.jpg" alt="Neon Drift Poster" class="card__poster">
-          <div class="card__body">
-            <div class="card__title">Neon Drift</div>
-            <div class="card__meta">2025 • Sci-Fi • ★★★★☆</div>
-            <button class="btn-trailer" data-trailer-id="dQw4w9WgXcQ" data-title="Neon Drift">Watch Trailer</button>
-          </div>
-        </article>
-
-        <article class="card" data-genre="Action" data-year="2001" data-rating="8.0">
-          <img src="./assets/fast and furiuos.jpg" alt="Fast and Furious Poster" class="card__poster">
-          <div class="card__body">
-            <div class="card__title">Fast and Furious</div>
-            <div class="card__meta">2001 • Action • ★★★★☆</div>
-            <button class="btn-trailer" data-trailer-id="2TAOizOnNPo" data-title="Fast and Furious">Watch Trailer</button>
-          </div>
-        </article>
-
-        <article class="card" data-genre="Drama" data-year="2010" data-rating="8.8">
-          <img src="./assets/Inception.jpg" alt="Inception Poster" class="card__poster">
-          <div class="card__body">
-            <div class="card__title">Inception</div>
-            <div class="card__meta">2010 • Drama • ★★★★☆</div>
-            <button class="btn-trailer" data-trailer-id="YoHD9XEInc0" data-title="Inception">Watch Trailer</button>
-          </div>
-        </article>
-
-        <article class="card" data-genre="Action" data-year="2022" data-rating="7.5">
-          <img src="./assets/Tron.jpg" alt="Tron Poster" class="card__poster">
-          <div class="card__body">
-            <div class="card__title">Tron</div>
-            <div class="card__meta">2022 • Action • ★★★★☆</div>
-            <button class="btn-trailer" data-trailer-id="L9szn1QQfas" data-title="Tron">Watch Trailer</button>
-          </div>
-        </article>
-
-        <article class="card" data-genre="Action" data-year="2004" data-rating="7.2">
-          <img src="./assets/Blade_Trilogy.jpg" alt="Blade Trilogy Poster" class="card__poster">
-          <div class="card__body">
-            <div class="card__title">Blade Trilogy</div>
-            <div class="card__meta">2004 • Action • ★★★★☆</div>
-            <button class="btn-trailer" data-trailer-id="N0pJYTwZ1-U" data-title="Blade Trilogy">Watch Trailer</button>
-          </div>
-        </article>
-
-        <article class="card" data-genre="Action-Drama" data-year="2021" data-rating="8.1">
-          <img src="./assets/Warrior.jpg" alt="Warrior Poster" class="card__poster">
-          <div class="card__body">
-            <div class="card__title">Warrior</div>
-            <div class="card__meta">2021 • Action-Drama • ★★☆</div>
-            <button class="btn-trailer" data-trailer-id="I3YjF2fZkU4" data-title="Warrior">Watch Trailer</button>
-          </div>
-        </article>
-
-        <article class="card" data-genre="Sci-Fi" data-year="2021" data-rating="8.1">
-          <img src="./assets/The Veil (2).jpg" alt="The Veil Poster" class="card__poster">
-          <div class="card__body">
-            <div class="card__title">Veil</div>
-            <div class="card__meta">2021 • Sci-Fi • ★★☆</div>
-            <button class="btn-trailer" data-trailer-id="abcd1234" data-title="Veil">Watch Trailer</button>
-          </div>
-        </article>
-
-        <article class="card" data-genre="Sci-Fi" data-year="1999" data-rating="8.7">
-          <img src="./assets/Matrix.avif" alt="The Matrix Poster" class="card__poster">
-          <div class="card__body">
-            <div class="card__title">Matrix</div>
-            <div class="card__meta">1999 • Sci-Fi • ★★★★☆</div>
-            <button class="btn-trailer" data-trailer-id="m8e-FF8MsqU" data-title="Matrix">Watch Trailer</button>
-          </div>
-        </article>
-
-        <article class="card" data-genre="Action" data-year="2008" data-rating="9.0">
-          <img src="./assets/Batman.jpg" alt="Batman Poster" class="card__poster">
-          <div class="card__body">
-            <div class="card__title">Batman</div>
-            <div class="card__meta">2008 • Action • ★★★★★</div>
-            <button class="btn-trailer" data-trailer-id="EXeTwQWrcwY" data-title="Batman">Watch Trailer</button>
-          </div>
-        </article>
-
-        <article class="card" data-genre="Action" data-year="2002" data-rating="8.0">
-          <img src="./assets/Spiderman.jpg" alt="Spider-Man Poster" class="card__poster">
-          <div class="card__body">
-            <div class="card__title">Spider-Man</div>
-            <div class="card__meta">2002 • Action • ★★★★☆</div>
-            <button class="btn-trailer" data-trailer-id="O7zvehDxttM" data-title="Spider-Man">Watch Trailer</button>
-          </div>
-        </article>
-
-        <!-- The Polar Express -->
-        <article class="card" data-genre="Drama" data-year="2004" data-rating="7.5">
-          <img src="./assets/Polar express.jpg" alt="The Polar Express Poster" class="card__poster">
-          <div class="card__body">
-            <div class="card__title">The Polar Express</div>
-            <div class="card__meta">2004 • Drama • ★★★★☆</div>
-            <button class="btn-trailer" data-trailer-id="TQhRqtt5vC0" data-title="The Polar Express">Watch Trailer</button>
-          </div>
-        </article>
-
-        <!-- Friday the 13th -->
-        <article class="card" data-genre="Horror" data-year="1980" data-rating="7.0">
-          <img src="./assets/Friday.jpg" alt="Friday the 13th Poster" class="card__poster">
-          <div class="card__body">
-            <div class="card__title">Friday the 13th</div>
-            <div class="card__meta">1980 • Horror • ★★★★☆</div>
-            <button class="btn-trailer" data-trailer-id="XU5R8z2Q0GE" data-title="Friday the 13th">Watch Trailer</button>
-          </div>
-        </article>
-
-        <!-- Gladiator -->
-        <article class="card" data-genre="Drama" data-year="2000" data-rating="8.5">
-          <img src="./assets/Gladiator.jpg" alt="Gladiator Poster" class="card__poster">
-          <div class="card__body">
-            <div class="card__title">Gladiator</div>
-            <div class="card__meta">2000 • Drama • ★★★★☆</div>
-            <button class="btn-trailer" data-trailer-id="owK1qxDselE" data-title="Gladiator">Watch Trailer</button>
-          </div>
-        </article>
-
-        <!-- The Goonies -->
-        <article class="card" data-genre="Adventure" data-year="1985" data-rating="7.8">
-          <img src="./assets/Goonies.jpg" alt="The Goonies Poster" class="card__poster">
-          <div class="card__body">
-            <div class="card__title">The Goonies</div>
-            <div class="card__meta">1985 • Adventure • ★★★★☆</div>
-            <button class="btn-trailer" data-trailer-id="hJ2j4oWdQtU" data-title="The Goonies">Watch Trailer</button>
-          </div>
-        </article>
-
-        <!-- The Muppets -->
-        <article class="card" data-genre="Comedy" data-year="2011" data-rating="7.2">
-          <img src="./assets/Muppets.jpg" alt="The Muppets Poster" class="card__poster">
-          <div class="card__body">
-            <div class="card__title">The Muppets</div>
-            <div class="card__meta">2011 • Comedy • ★★★★☆</div>
-            <button class="btn-trailer" data-trailer-id="tgbNymZ7vqY" data-title="The Muppets">Watch Trailer</button>
-          </div>
-        </article>
-
-      </div>
-
-      <!-- Sort by year -->
-      <div class="price-filter flex flex-col">
-        <select name="movieSort" id="movieSort" onchange="sortChange(event)">
-          <option disabled selected value="">Sort by year</option>
-          <option value="newest">Newest to Oldest</option>
-          <option value="oldest">Oldest to Newest</option>
-        </select>
-      </div>
+    <section id="results" aria-live="polite">
+      <!-- Search results will be injected here -->
     </section>
   </main>
 
+  <footer>
+    <p>&copy; 2025 Movie Gallery</p>
+  </footer>
 </body>
 </html>
+
+

@@ -44,7 +44,7 @@ function displayMovies(moviesArray) {
     .map(movie => {
       return `
         <div class="movie-item">
-          <img src="${movie.Poster}" width="120">
+          <img class="movie_img" src="${movie.Poster}" width="120">
           <h3>${movie.Title}</h3>
           <p>${movie.Year}</p>
         </div>
