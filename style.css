@@ -1,109 +1,115 @@
+/* Importing the Poppins font for a modern look */
 body {
-  font-family: 'Orbitron', sans-serif;
-  background: #111 url('images/brick-wall.jpg') repeat;
-  color: #eee;
-  margin: 0;
-  padding: 0;
+    /* 1. Brick Wall Background */
+    background-image: url('images/brick.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: #1a1a1a; /* Fallback color */
+
+    /* 2. Professional Typography */
+    font-family: 'Poppins', sans-serif;
+    color: #f0f0f0;
+    margin: 0;
 }
 
-.site-header {
-  background: linear-gradient(90deg, #ff00cc, #3333ff);
-  padding: 1rem;
-  text-align: center;
-  color: white;
-  text-shadow: 2px 2px #000;
+/* 3. Header Styling */
+.main-header {
+    background-color: rgba(180, 0, 0, 0.9); /* A dark, deep red accent */
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
 }
 
 .logo {
-  font-size: 2rem;
-  letter-spacing: 2px;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
-.nav-bar {
-  margin-top: 1rem;
+/* 4. Controls Bar */
+.controls-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
 }
 
-.nav-bar input,
-.nav-bar select,
-.nav-bar button {
-  padding: 0.5rem;
-  margin: 0.2rem;
-  border: none;
-  border-radius: 4px;
-  font-family: inherit;
+.search-form input, .sort-filter select {
+    padding: 8px;
+    border-radius: 4px;
+    border: none;
+    margin-right: 10px;
 }
 
-.results {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 2rem;
+.search-form button {
+    padding: 8px 15px;
+    background-color: #ffc107; /* A bright, searchable button color */
+    color: #1a1a1a;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
 }
 
-.movie-item {
-  background: rgba(0,0,0,0.7);
-  border: 2px solid #ff00cc;
-  border-radius: 8px;
-  margin: 1rem;
-  padding: 1rem;
-  width: 180px;
-  text-align: center;
-  box-shadow: 0 0 10px #ff00cc;
-  transition: transform 0.2s ease;
+/* 5. Gallery Layout (Responsive Grid) */
+.movie-gallery {
+    display: grid;
+    /* This creates a responsive grid that fits 4 columns, adjusting the size automatically */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-.movie-item:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px #00ffff;
+/* 6. Movie Card Styling with Hover Effect */
+.movie-card {
+    background-color: rgba(30, 30, 30, 0.9);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
 }
 
-.movie_img {
-  border-radius: 6px;
-  width: 100%;
+.movie-card:hover {
+    transform: translateY(-5px); /* Lift the card slightly */
+    box-shadow: 0 10px 25px rgba(255, 193, 7, 0.5); /* Glowing effect on hover */
 }
 
-.trailer-btn {
-  margin-top: 0.5rem;
-  background: #00ffff;
-  color: #111;
-  border: none;
-  padding: 0.4rem 0.8rem;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
+.movie-card img {
+    width: 100%;
+    height: 300px; 
+    object-fit: cover; 
+    display: block;
 }
 
-.trailer-btn:hover {
-  background: #ff00cc;
-  color: #fff;
+.card-info {
+    padding: 15px;
+    text-align: center;
 }
 
-/* Modal */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 999;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.8);
+.card-info h2 {
+    font-size: 1.2em;
+    margin: 0 0 5px 0;
+    font-weight: 600;
 }
 
-.modal-content {
-  background: #222;
-  margin: 10% auto;
-  padding: 1rem;
-  border: 2px solid #00ffff;
-  width: 600px;
-  text-align: center;
-  border-radius: 8px;
+.card-info .year {
+    font-size: 0.9em;
+    color: #aaaaaa;
 }
 
-.close-btn {
-  float: right;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #ff00cc;
+/* 7. Footer Styling */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+    background-color: rgba(0, 0, 0, 0.7);
+    font-size: 0.8em;
 }
-
-
-

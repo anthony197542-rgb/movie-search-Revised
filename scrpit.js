@@ -119,4 +119,3 @@ window.addEventListener("DOMContentLoaded", () => {
   currentMovies = [...customMovies];
   displayMovies(currentMovies);
 });
-
