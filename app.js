@@ -1,8 +1,51 @@
+// ===== Custom Movies =====
+const customMovies = [
+  {
+    Title: "Gladiator",
+    Year: "2000",
+    Poster: "images/gladiator.jpg"
+  },
+  {
+    Title: "Batman",
+    Year: "1989",
+    Poster: "images/batman.jpg"
+  },
+  {
+    Title: "Spider-Man",
+    Year: "2002",
+    Poster: "images/spiderman.jpg"
+  },
+  {
+    Title: "The Polar Express",
+    Year: "2004",
+    Poster: "images/polarexpress.jpg"
+  },
+  {
+    Title: "Friday the 13th",
+    Year: "1980",
+    Poster: "images/friday13th.jpg"
+  },
+  {
+    Title: "The Muppets",
+    Year: "2011",
+    Poster: "images/muppets.jpg"
+  },
+  {
+    Title: "Veil",
+    Year: "2023",
+    Poster: "images/veil.jpg"
+  },
+  {
+    Title: "The Goonies",
+    Year: "1985",
+    Poster: "images/goonies.jpg"
+  }
+];
 
- // This will store the movies we get from the API
+// This will store the movies we get from the API + custom ones
 let currentMovies = [];
 
-
+// ===== Search Movies via OMDb =====
 async function searchMovies() {
   const query = document.getElementById("searchInput").value;
 
@@ -26,7 +69,7 @@ async function searchMovies() {
     }
 
     // Save the movies so sorting can use them
-    currentMovies = data.Search;
+    currentMovies = [...data.Search, ...customMovies];
 
     // Display the movies
     displayMovies(currentMovies);
@@ -36,7 +79,7 @@ async function searchMovies() {
   }
 }
 
-
+// ===== Display Movies =====
 function displayMovies(moviesArray) {
   const resultsContainer = document.querySelector(".results");
 
@@ -53,7 +96,7 @@ function displayMovies(moviesArray) {
     .join("");
 }
 
-
+// ===== Sorting Logic =====
 function sortChange(event) {
   const choice = event.target.value;
 
@@ -70,3 +113,10 @@ function sortChange(event) {
 
   displayMovies(sorted);
 }
+
+// ===== Show Custom Movies on Page Load =====
+window.addEventListener("DOMContentLoaded", () => {
+  currentMovies = [...customMovies];
+  displayMovies(currentMovies);
+});
+
