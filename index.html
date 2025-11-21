@@ -1,82 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ultimate Movie Archive</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="scrpit.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Search Archive</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="js/script.js" defer></script>
 </head>
 <body>
 
-    <header class="main-header">
-        <h1 class="logo">🎬 Ultimate Movie Archive</h1>
-    </header>
+  <!-- Header -->
+  <header class="main-header">
+    <h1 class="logo">🎬 Movie Search Archive</h1>
+  </header>
 
-    <section class="controls-bar">
-        <div class="search-form">
-            <input type="text" id="search-input" placeholder="Search movies...">
-            <button id="search-button">Search</button>
-        </div>
-        <div class="sort-filter">
-            <label for="sort-select">Sort By:</label>
-            <select id="sort-select">
-                <option value="default">Default</option>
-                <option value="newest">Newest</option>
-                <option value="oldest">Oldest</option>
-                <option value="title">Title</option>
-            </select>
-        </div>
-    </section>
+  <!-- Controls -->
+  <section class="controls-bar">
+    <div class="search-form">
+      <input type="text" id="search-input" placeholder="Search movies...">
+      <button id="search-button">Search</button>
+    </div>
+    <div class="sort-filter">
+      <label for="sort-select">Sort By:</label>
+      <select id="sort-select">
+        <option value="default">Default</option>
+        <option value="newest">Newest</option>
+        <option value="oldest">Oldest</option>
+        <option value="title">Title</option>
+      </select>
+    </div>
+  </section>
 
-    <main class="movie-gallery">
-        
-        <article class="movie-card" data-year="2000">
-            <img src="./assets/Gladiator.webp" alt="Poster for Gladiator">
-            <div class="card-info">
-                <h2>Gladiator</h2>
-                <p class="year">2000</p>
-            </div>
-        </article>
+  <!-- Gallery -->
+  <main class="movie-gallery">
+    <p class="initial-message">Search for a movie or click the Search button to see recommended titles!</p>
+  </main>
 
-        <article class="movie-card" data-year="1989">
-            <img src="./assets/Batman.jpg" alt="Poster for Batman">
-            <div class="card-info">
-                <h2>Batman</h2>
-                <p class="year">1989</p>
-            </div>
-        </article>
-        
-        <article class="movie-card" data-year="2002">
-            <img src="./assets/spiderman.jpg" alt="Poster for Spider-Man">
-            <div class="card-info">
-                <h2>Spider-Man</h2>
-                <p class="year">2002</p>
-            </div>
-        </article>
+  <!-- Modal (hidden by default) -->
+  <div id="movie-modal" class="modal">
+    <div class="modal-content">
+      <span id="modal-close">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
 
-        <article class="movie-card" data-year="2004">
-            <img src="./assets/Polar express.jpg" alt="Poster for The Polar Express">
-            <div class="card-info">
-                <h2>The Polar Express</h2>
-                <p class="year">2004</p>
-            </div>
-        </article>
-
-        <article class="movie-card" data-year="1980">
-            <img src="./assets/Friday.webp" alt="Poster for Friday the 13th">
-            <div class="card-info">
-                <h2>Friday the 13th</h2>
-                <p class="year">1980</p>
-            </div>
-        </article>
-        
-        </main>
-    
-    <footer>
-        <p>&copy; 2025 Ultimate Movie Archive</p>
-    </footer>
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Movie Project</p>
+  </footer>
 
 </body>
 </html>

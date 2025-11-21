@@ -1,121 +1,146 @@
-// ===== Custom Movies =====
-const customMovies = [
-  {
-    Title: "Gladiator",
-    Year: "2000",
-    Poster: "images/gladiator.jpg"
-  },
-  {
-    Title: "Batman",
-    Year: "1989",
-    Poster: "images/batman.jpg"
-  },
-  {
-    Title: "Spider-Man",
-    Year: "2002",
-    Poster: "images/spiderman.jpg"
-  },
-  {
-    Title: "The Polar Express",
-    Year: "2004",
-    Poster: "images/polarexpress.jpg"
-  },
-  {
-    Title: "Friday the 13th",
-    Year: "1980",
-    Poster: "images/friday13th.jpg"
-  },
-  {
-    Title: "The Muppets",
-    Year: "2011",
-    Poster: "images/muppets.jpg"
-  },
-  {
-    Title: "Veil",
-    Year: "2023",
-    Poster: "images/veil.jpg"
-  },
-  {
-    Title: "The Goonies",
-    Year: "1985",
-    Poster: "images/goonies.jpg"
-  }
-];
+const API_KEY = "c9f7240a";
 
-// This will store the movies we get from the API + custom ones
+// Global state
 let currentMovies = [];
 
-// ===== Search Movies via OMDb =====
-async function searchMovies() {
-  const query = document.getElementById("searchInput").value;
+// Function to display movies in the gallery
+function displayMovies(movies) {
+  const gallery = document.querySelector(".movie-gallery");
+  gallery.innerHTML = ""; // Clear previous results
 
-  // Stop if empty
-  if (!query) {
-    alert("Please type a movie name first.");
+  if (!movies || movies.length === 0) {
+    gallery.innerHTML = "<p>No movies found.</p>";
     return;
   }
 
+  movies.forEach(movie => {
+    const card = document.createElement("div");
+    card.classList.add("movie-card");
+
+    card.innerHTML = `
+      <img src="${movie.Poster !== "N/A" ? movie.Poster : "https://via.placeholder.com/150"}" 
+           alt="${movie.Title}" class="movie-poster"/>
+      <h3>${movie.Title}</h3>
+      <p>${movie.Year}</p>
+    `;
+
+    // Attach click event for modal
+    card.addEventListener("click", async () => {
+      try {
+        const res = await fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&i=${movie.imdbID}`);
+        const details = await res.json();
+        showMovieModal(details);
+      } catch (error) {
+        console.error("Error fetching movie details:", error);
+      }
+    });
+
+    gallery.appendChild(card);
+  });
+}
+
+// Function to search movies
+async function searchMovies() {
+  const query = document.getElementById("search-input").value.trim();
+  const gallery = document.querySelector(".movie-gallery");
+
+  if (!query) {
+    gallery.innerHTML = "<p>Please enter a movie title.</p>";
+    return;
+  }
+
+  // Show loading state
+  gallery.innerHTML = "<h2>Loading...</h2>";
+
   try {
-    const response = await fetch(`https://www.omdbapi.com/?apikey=c9f7240a&s=${query}`);
+    const response = await fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${encodeURIComponent(query)}`);
     const data = await response.json();
 
-    const resultsContainer = document.querySelector(".results");
-
-    // If no movies found
-    if (!data.Search) {
-      resultsContainer.innerHTML = "<p>No movies found.</p>";
-      currentMovies = []; // reset
-      return;
+    if (data.Response === "True") {
+      currentMovies = data.Search;
+      displayMovies(currentMovies);
+    } else {
+      gallery.innerHTML = "<p>No movies found. Try a different search term.</p>";
     }
-
-    // Save the movies so sorting can use them
-    currentMovies = [...data.Search, ...customMovies];
-
-    // Display the movies
-    displayMovies(currentMovies);
-
   } catch (error) {
     console.error("API error:", error);
+    gallery.innerHTML = "<p>Something went wrong. Please try again later.</p>";
   }
 }
 
-// ===== Display Movies =====
-function displayMovies(moviesArray) {
-  const resultsContainer = document.querySelector(".results");
+// Function to show modal with movie details
+function showMovieModal(details) {
+  const modal = document.getElementById("movie-modal");
+  const modalBody = document.getElementById("modal-body");
+  const closeBtn = document.getElementById("modal-close");
 
-  resultsContainer.innerHTML = moviesArray
-    .map(movie => {
-      return `
-        <div class="movie-item">
-          <img class="movie_img" src="${movie.Poster}" width="120">
-          <h3>${movie.Title}</h3>
-          <p>${movie.Year}</p>
-        </div>
-      `;
-    })
-    .join("");
+  modalBody.innerHTML = `
+    <h2>${details.Title} (${details.Year})</h2>
+    <img src="${details.Poster !== "N/A" ? details.Poster : "https://via.placeholder.com/150"}" 
+         alt="${details.Title}" class="modal-poster"/>
+    <p><strong>Genre:</strong> ${details.Genre}</p>
+    <p><strong>Director:</strong> ${details.Director}</p>
+    <p><strong>Plot:</strong> ${details.Plot}</p>
+    <p><strong>IMDB Rating:</strong> ${details.imdbRating}</p>
+  `;
+
+  modal.style.display = "block";
+
+  // Close modal when clicking X
+  closeBtn.onclick = () => {
+    modal.style.display = "none";
+  };
+
+  // Close modal when clicking outside
+  window.onclick = (event) => {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  };
 }
 
-// ===== Sorting Logic =====
-function sortChange(event) {
-  const choice = event.target.value;
+// Function to sort movies
+function setupSorting() {
+  const sortSelect = document.getElementById("sort-select");
+  if (!sortSelect) return;
 
-  // Copy the movies array
-  let sorted = [...currentMovies];
+  sortSelect.addEventListener("change", (e) => {
+    const value = e.target.value;
+    let sortedMovies = [...currentMovies];
 
-  if (choice === "newest") {
-    sorted.sort((a, b) => parseInt(b.Year) - parseInt(a.Year));
-  }
+    if (value === "newest") {
+      sortedMovies.sort((a, b) => b.Year.localeCompare(a.Year));
+    } else if (value === "oldest") {
+      sortedMovies.sort((a, b) => a.Year.localeCompare(b.Year));
+    } else if (value === "title") {
+      sortedMovies.sort((a, b) => a.Title.localeCompare(b.Title));
+    }
 
-  if (choice === "oldest") {
-    sorted.sort((a, b) => parseInt(a.Year) - parseInt(b.Year));
-  }
-
-  displayMovies(sorted);
+    displayMovies(sortedMovies);
+  });
 }
 
-// ===== Show Custom Movies on Page Load =====
+// Setup event listeners once DOM is ready
 window.addEventListener("DOMContentLoaded", () => {
-  currentMovies = [...customMovies];
-  displayMovies(currentMovies);
+  const searchButton = document.getElementById("search-button");
+  const searchInput = document.getElementById("search-input");
+
+  if (searchButton) {
+    searchButton.addEventListener("click", searchMovies);
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        searchMovies();
+      }
+    });
+  }
+
+  setupSorting();
 });
+
+
+
+
+
