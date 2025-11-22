@@ -58,13 +58,12 @@ body {
 
 /* 5. Gallery Layout (Responsive Grid) */
 .movie-gallery {
-    display: grid;
-    /* This creates a responsive grid that fits 4 columns, adjusting the size automatically */
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
     gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+   
 }
 
 /* 6. Movie Card Styling with Hover Effect */
@@ -149,4 +148,6 @@ footer {
 #modal-close:hover {
   color: #fff;
 }
+
+
 
